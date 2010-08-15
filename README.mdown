@@ -1,1 +1,1 @@
-<a href=http://blog.mugunthkumar.com/coding/iphone-tutorial-scheduling-local-notifications-using-a-singleton-class/> Visit my blog for more details</a>
+<a href=http://blog.mugunthkumar.com/coding/iphone-tutorial-better-way-to-check-capabilities-of-ios-devices/> Visit my blog for more details</a>

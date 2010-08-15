@@ -63,4 +63,64 @@ static MKDeviceHelper *_instance;
     return self;	
 }
 
+- (BOOL) isMicrophoneAvailable
+{
+	AVAudioSession *ptr = [AVAudioSession sharedInstance];
+	return ptr.inputIsAvailable;
+}
+
+- (void) vibrateWithSound
+{
+	AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+}
+
+-(void) vibrateWithoutSound
+{
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+- (BOOL) isCameraAvailable
+{
+	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+- (BOOL) isFrontCameraAvailable
+{
+}
+
+- (BOOL) isCameraFlashAvailable
+{
+}
+
+- (BOOL) canSendEmail
+{
+	return [MFMailComposeViewController canSendMail];
+}
+
+- (BOOL) canSendSMS
+{
+	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"sms://"]];
+}
+
+- (BOOL) canMakePhoneCalls
+{
+	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]];
+}
+
+- (BOOL) isMultitaskingCapable
+{
+	
+}
+
+- (BOOL) isGPSAvailable
+{
+	
+}
+
+- (BOOL) isGyroscopeAvailable
+{
+	
+}
+
+
 @end

@@ -15,7 +15,10 @@
 		2899E5220DE3E06400AC0155 /* DeviceHelperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* DeviceHelperViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* DeviceHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DeviceHelperViewController.m */; };
-		E6302F5E12182B2D00EA7A08 /* MKDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6302F5D12182B2D00EA7A08 /* MKDeviceHelper.m */; };
+		E6302F661218378400EA7A08 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6302F651218378400EA7A08 /* AVFoundation.framework */; };
+		E6302FBB12183A8D00EA7A08 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6302FBA12183A8D00EA7A08 /* MessageUI.framework */; };
+		E6302FF91218444D00EA7A08 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6302FF81218444D00EA7A08 /* AudioToolbox.framework */; };
+		E6303014121848A500EA7A08 /* MKDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6303013121848A500EA7A08 /* MKDeviceHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +35,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DeviceHelper_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceHelper_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DeviceHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeviceHelper-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		E6302F5C12182B2D00EA7A08 /* MKDeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceHelper.h; sourceTree = "<group>"; };
-		E6302F5D12182B2D00EA7A08 /* MKDeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceHelper.m; sourceTree = "<group>"; };
+		E6302F651218378400EA7A08 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E6302FBA12183A8D00EA7A08 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		E6302FF81218444D00EA7A08 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E6303012121848A500EA7A08 /* MKDeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKDeviceHelper.h; path = Helpers/MKDeviceHelper.h; sourceTree = "<group>"; };
+		E6303013121848A500EA7A08 /* MKDeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKDeviceHelper.m; path = Helpers/MKDeviceHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,9 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				E6302F661218378400EA7A08 /* AVFoundation.framework in Frameworks */,
+				E6302FBB12183A8D00EA7A08 /* MessageUI.framework in Frameworks */,
+				E6302FF91218444D00EA7A08 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,9 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				E6302F4E12182AC000EA7A08 /* Helpers */,
+				E6302F651218378400EA7A08 /* AVFoundation.framework */,
+				E6302FBA12183A8D00EA7A08 /* MessageUI.framework */,
+				E6302FF81218444D00EA7A08 /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -114,8 +126,8 @@
 		E6302F4E12182AC000EA7A08 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E6302F5C12182B2D00EA7A08 /* MKDeviceHelper.h */,
-				E6302F5D12182B2D00EA7A08 /* MKDeviceHelper.m */,
+				E6303012121848A500EA7A08 /* MKDeviceHelper.h */,
+				E6303013121848A500EA7A08 /* MKDeviceHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -177,7 +189,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DeviceHelperAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* DeviceHelperViewController.m in Sources */,
-				E6302F5E12182B2D00EA7A08 /* MKDeviceHelper.m in Sources */,
+				E6303014121848A500EA7A08 /* MKDeviceHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,11 +227,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mugunth Kumar (987LXQ5BQX)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D759DBA5-7871-4AAB-BF2C-6416C63D544C";
 				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;

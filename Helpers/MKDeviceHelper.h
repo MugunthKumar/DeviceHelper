@@ -8,6 +8,10 @@
 //  Permission granted to do anything, commercial/non-commercial with this file apart from removing the line/URL above
 
 #import <Foundation/Foundation.h>
+#import <MessageUI/MessageUI.h>
+
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioServices.h>
 
 @interface MKDeviceHelper : NSObject {
 
