@@ -1,5 +1,5 @@
 # Build related files
-.DS_Store/
+.DS_Store
 build/*
 
 # User profile related files on XCode 3.X
