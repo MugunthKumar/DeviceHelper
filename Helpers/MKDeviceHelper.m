@@ -84,13 +84,50 @@ static MKDeviceHelper *_instance;
 	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
 
+- (BOOL) isVideoCameraAvailable
+{
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+	NSArray *sourceTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
+	[picker release];
+	
+	if (![sourceTypes containsObject:(NSString *)kUTTypeMovie ]){
+		
+		return NO;
+	}
+	
+	return YES;
+}
+
 - (BOOL) isFrontCameraAvailable
 {
+#ifdef __IPHONE_4_0
+	return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+#else
+	return NO;
+#endif
+	
 }
 
 - (BOOL) isCameraFlashAvailable
 {
+#ifdef __IPHONE_4_0
+	return [UIImagePickerController isFlashAvailableForCameraDevice:UIImagePickerControllerCameraDeviceRear];
+#else
+	return NO;
+#endif
 }
+
+// later when Apple adds a camera flash to the front camera in iPhone 5 or 6 or whatever, this function can be uncommented :)
+/*
+- (BOOL) isCameraFlashAvailableForFrontCamera
+{
+#ifdef __IPHONE_5_0 or 6?!?
+	return [UIImagePickerController isFlashAvailableForCameraDevice:UIImagePickerControllerCameraDeviceFront];
+#else
+	return NO;
+#endif
+}
+*/
 
 - (BOOL) canSendEmail
 {
@@ -99,7 +136,11 @@ static MKDeviceHelper *_instance;
 
 - (BOOL) canSendSMS
 {
+#ifdef __IPHONE_4_0
+	return [MFMessageComposeViewController canSendText];
+#else
 	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"sms://"]];
+#endif
 }
 
 - (BOOL) canMakePhoneCalls
@@ -109,16 +150,40 @@ static MKDeviceHelper *_instance;
 
 - (BOOL) isMultitaskingCapable
 {
+	UIDevice* device = [UIDevice currentDevice];
+	BOOL backgroundSupported = NO;
+	if ([device respondsToSelector:@selector(isMultitaskingSupported)])
+		backgroundSupported = device.multitaskingSupported;
 	
+	return backgroundSupported;
 }
 
-- (BOOL) isGPSAvailable
+- (BOOL) isCompassAvailable
 {
+	BOOL compassAvailable = NO;
 	
+#ifdef __IPHONE_3_0
+	compassAvailable = [CLLocationManager headingAvailable];
+#else
+	CLLocationManager *cl = [[CLLocationManager alloc] init];	
+	compassAvailable = cl.headingAvailable;		
+	[cl release];
+#endif
+	
+	return compassAvailable;
+
 }
 
 - (BOOL) isGyroscopeAvailable
 {
+#ifdef __IPHONE_4_0
+	CMMotionManager *motionManager = [[CMMotionManager alloc] init];
+	BOOL gyroAvailable = motionManager.gyroAvailable;
+	[motionManager release];
+	return gyroAvailable;
+#else
+	return NO;
+#endif
 	
 }
 

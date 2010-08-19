@@ -12,6 +12,9 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioServices.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface MKDeviceHelper : NSObject {
 
