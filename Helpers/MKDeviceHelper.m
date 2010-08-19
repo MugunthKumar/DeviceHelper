@@ -79,6 +79,16 @@ static MKDeviceHelper *_instance;
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
+- (BOOL) doesPhotoLibraryHavePictures
+{
+	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+- (BOOL) doesCameraRollHavePictures
+{
+	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+}
+
 - (BOOL) isCameraAvailable
 {
 	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
@@ -187,5 +197,16 @@ static MKDeviceHelper *_instance;
 	
 }
 
+
++ (BOOL) isRetinaDisplay
+{
+	int scale = 1.0;
+	UIScreen *screen = [UIScreen mainScreen];
+	if([screen respondsToSelector:@selector(scale)])
+		scale = screen.scale;
+	
+	if(scale == 2.0f) return YES;
+	else return NO;
+}
 
 @end
