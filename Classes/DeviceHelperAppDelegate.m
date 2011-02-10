@@ -8,6 +8,7 @@
 
 #import "DeviceHelperAppDelegate.h"
 #import "DeviceHelperViewController.h"
+#import "UIDevice_MKAdditions.h"
 
 @implementation DeviceHelperAppDelegate
 
@@ -25,9 +26,8 @@
     // Add the view controller's view to the window and display.
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
-	
-	if([[MKDeviceHelper sharedInstance] canVibrate])
-		NSLog(@"Email allowed");
+	if([[UIDevice currentDevice] frontCameraAvailable])
+		NSLog(@"facetime camera available");
     return YES;
 }
 

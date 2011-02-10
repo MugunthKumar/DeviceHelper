@@ -1,69 +1,15 @@
 //
-//  MKDeviceHelper.m
+//  UIDevice_MKAdditions.m
 //  DeviceHelper
 //
 //  Created by Mugunth Kumar on 15-Aug-10.
 //  Copyright 2010 Steinlogic. All rights reserved.
-//	File created using Singleton XCode Template by Mugunth Kumar (http://mugunthkumar.com
-//  Permission granted to do anything, commercial/non-commercial with this file apart from removing the line/URL above
 
-#import "MKDeviceHelper.h"
+#import "UIDevice_MKAdditions.h"
 
+@implementation UIDevice (MKAdditions)
 
-static MKDeviceHelper *_instance;
-@implementation MKDeviceHelper
-
-+ (MKDeviceHelper*)sharedInstance
-{
-	@synchronized(self) {
-		
-        if (_instance == nil) {
-			
-            _instance = [[super allocWithZone:NULL] init];
-            
-            // Allocate/initialize any member variables of the singleton class her
-            // example
-			//_instance.member = @"";
-        }
-    }
-    return _instance;
-}
-
-
-#pragma mark Singleton Methods
-
-+ (id)allocWithZone:(NSZone *)zone
-{	
-	return [[self sharedInstance]retain];	
-}
-
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;	
-}
-
-- (id)retain
-{	
-    return self;	
-}
-
-- (unsigned)retainCount
-{
-    return NSUIntegerMax;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;	
-}
-
-- (BOOL) isMicrophoneAvailable
+- (BOOL) microphoneAvailable
 {
 	AVAudioSession *ptr = [AVAudioSession sharedInstance];
 	return ptr.inputIsAvailable;
@@ -89,12 +35,12 @@ static MKDeviceHelper *_instance;
 	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
 }
 
-- (BOOL) isCameraAvailable
+- (BOOL) cameraAvailable
 {
 	return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
 
-- (BOOL) isVideoCameraAvailable
+- (BOOL) videoCameraAvailable
 {
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	NSArray *sourceTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
@@ -108,7 +54,7 @@ static MKDeviceHelper *_instance;
 	return YES;
 }
 
-- (BOOL) isFrontCameraAvailable
+- (BOOL) frontCameraAvailable
 {
 #ifdef __IPHONE_4_0
 	return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
@@ -118,7 +64,7 @@ static MKDeviceHelper *_instance;
 	
 }
 
-- (BOOL) isCameraFlashAvailable
+- (BOOL) cameraFlashAvailable
 {
 #ifdef __IPHONE_4_0
 	return [UIImagePickerController isFlashAvailableForCameraDevice:UIImagePickerControllerCameraDeviceRear];
@@ -158,17 +104,16 @@ static MKDeviceHelper *_instance;
 	return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]];
 }
 
-- (BOOL) isMultitaskingCapable
+- (BOOL) multitaskingCapable
 {
-	UIDevice* device = [UIDevice currentDevice];
 	BOOL backgroundSupported = NO;
-	if ([device respondsToSelector:@selector(isMultitaskingSupported)])
-		backgroundSupported = device.multitaskingSupported;
+	if ([self respondsToSelector:@selector(isMultitaskingSupported)])
+		backgroundSupported = self.multitaskingCapable;
 	
 	return backgroundSupported;
 }
 
-- (BOOL) isCompassAvailable
+- (BOOL) compassAvailable
 {
 	BOOL compassAvailable = NO;
 	
@@ -184,7 +129,7 @@ static MKDeviceHelper *_instance;
 
 }
 
-- (BOOL) isGyroscopeAvailable
+- (BOOL) gyroscopeAvailable
 {
 #ifdef __IPHONE_4_0
 	CMMotionManager *motionManager = [[CMMotionManager alloc] init];
@@ -198,7 +143,7 @@ static MKDeviceHelper *_instance;
 }
 
 
-+ (BOOL) isRetinaDisplay
+- (BOOL) retinaDisplayCapable
 {
 	int scale = 1.0;
 	UIScreen *screen = [UIScreen mainScreen];
