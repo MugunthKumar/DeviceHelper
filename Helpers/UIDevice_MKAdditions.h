@@ -20,7 +20,7 @@
 
 - (BOOL) microphoneAvailable;
 - (void) vibrateWithSound;
--(void) vibrateWithoutSound;
+- (void) vibrateWithoutSound;
 
 - (BOOL) doesPhotoLibraryHavePictures;
 - (BOOL) doesCameraRollHavePictures;

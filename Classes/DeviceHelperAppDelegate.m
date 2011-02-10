@@ -26,8 +26,8 @@
     // Add the view controller's view to the window and display.
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
-	if([[UIDevice currentDevice] frontCameraAvailable])
-		NSLog(@"facetime camera available");
+	if([[UIDevice currentDevice] retinaDisplayCapable])
+		NSLog(@"retinaDisplayCapable available");
     return YES;
 }
 
