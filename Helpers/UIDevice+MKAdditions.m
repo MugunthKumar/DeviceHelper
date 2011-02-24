@@ -5,7 +5,7 @@
 //  Created by Mugunth Kumar on 15-Aug-10.
 //  Copyright 2010 Steinlogic. All rights reserved.
 
-#import "UIDevice_MKAdditions.h"
+#import "UIDevice+MKAdditions.h"
 
 @implementation UIDevice (MKAdditions)
 

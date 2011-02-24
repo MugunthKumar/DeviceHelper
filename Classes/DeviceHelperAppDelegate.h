@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIDevice_MKAdditions.h"
+#import "UIDevice+MKAdditions.h"
 
 @class DeviceHelperViewController;
 

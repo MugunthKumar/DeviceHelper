@@ -14,9 +14,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface UIDevice (MKAdditions)  {
-
-}
+@interface UIDevice (MKAdditions)
 
 - (BOOL) microphoneAvailable;
 - (void) vibrateWithSound;

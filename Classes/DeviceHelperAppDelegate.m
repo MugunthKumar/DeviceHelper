@@ -8,7 +8,6 @@
 
 #import "DeviceHelperAppDelegate.h"
 #import "DeviceHelperViewController.h"
-#import "UIDevice_MKAdditions.h"
 
 @implementation DeviceHelperAppDelegate
 
